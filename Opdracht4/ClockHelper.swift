@@ -11,7 +11,7 @@ import Foundation
 class ClockHelper{
     var tekst: [String]
     
-    init(vc: ViewController){
+    init(){//vc: ViewController){
         tekst = ["HET","IS"]
     }
     
@@ -53,6 +53,43 @@ class ClockHelper{
         case 12:
             tekst.append("TWAALF");
             break;
+        case 13:
+            tekst.append("EEN");
+            break;
+        case 14:
+            tekst.append("TWEE");
+            break;
+        case 15:
+            tekst.append("DRIE");
+            break;
+        case 16:
+            tekst.append("VIER");
+            break;
+        case 17:
+            tekst.append("VIJFu");
+            break;
+        case 18:
+            tekst.append("ZES");
+            break;
+        case 19:
+            tekst.append("ZEVEN");
+            break;
+        case 20:
+            tekst.append("ACHT");
+            break;
+        case 21:
+            tekst.append("NEGEN");
+            break;
+        case 22:
+            tekst.append("TIENu");
+            break;
+        case 23:
+            tekst.append("ELF");
+            break;
+        case 00:
+            tekst.append("TWAALF");
+            break;
+            
         default:
             break;
         }
