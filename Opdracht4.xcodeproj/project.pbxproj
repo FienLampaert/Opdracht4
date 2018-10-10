@@ -14,6 +14,7 @@
 		E846C672216D366A0054BE72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E846C670216D366A0054BE72 /* LaunchScreen.storyboard */; };
 		E846C67D216D366A0054BE72 /* Opdracht4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846C67C216D366A0054BE72 /* Opdracht4Tests.swift */; };
 		E846C688216D366B0054BE72 /* Opdracht4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846C687216D366B0054BE72 /* Opdracht4UITests.swift */; };
+		E8F79A3B216E9C26006BE93B /* ClockHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79A3A216E9C26006BE93B /* ClockHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E846C683216D366B0054BE72 /* Opdracht4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Opdracht4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E846C687216D366B0054BE72 /* Opdracht4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opdracht4UITests.swift; sourceTree = "<group>"; };
 		E846C689216D366B0054BE72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8F79A3A216E9C26006BE93B /* ClockHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E846C66E216D366A0054BE72 /* Assets.xcassets */,
 				E846C670216D366A0054BE72 /* LaunchScreen.storyboard */,
 				E846C673216D366A0054BE72 /* Info.plist */,
+				E8F79A3A216E9C26006BE93B /* ClockHelper.swift */,
 			);
 			path = Opdracht4;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8F79A3B216E9C26006BE93B /* ClockHelper.swift in Sources */,
 				E846C66A216D365D0054BE72 /* ViewController.swift in Sources */,
 				E846C668216D365D0054BE72 /* AppDelegate.swift in Sources */,
 			);
