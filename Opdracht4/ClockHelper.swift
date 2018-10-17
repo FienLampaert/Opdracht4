@@ -8,11 +8,30 @@
 
 import Foundation
 
+protocol ClockHelperDelegate{
+    func updateClock(_ result: Array<String>)
+}
+
 class ClockHelper{
+    var delegate: ClockHelperDelegate
+    
     var tekst: [String]
     
-    init(){//vc: ViewController){
+    init(delegate: ClockHelperDelegate){
         tekst = ["HET","IS"]
+        
+        self.delegate = delegate
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {
+            (timer) in self.updateClock(timer)
+        }
+        
+        
+    }
+    
+    func updateClock(_ timer: Timer){
+        //let result = timer.fireDate.description
+        let resultArray = getTime()
+        delegate.updateClock(resultArray)
     }
     
     func setUur(uur: Int){
@@ -180,6 +199,15 @@ class ClockHelper{
     }
     
     func getTime() -> [String]{
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let minuten = calendar.component(.minute, from: date)
+        let min = getMinuten(minuten: minuten)
+        let uur = calendar.component(.hour, from: date)
+ 
+        setMinuten(minuten: min, u: uur)
+        
         return tekst;
     }
 }

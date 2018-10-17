@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ClockHelperDelegate {   
 
-    let ch = ClockHelper()
+    //let ch = ClockHelper(delegate: self as! ClockHelperDelegate)
     
     @IBOutlet var lblHet: [UILabel]!
     @IBOutlet var lblIs: [UILabel]!
@@ -32,22 +32,35 @@ class ViewController: UIViewController {
     @IBOutlet var lblVijf2: [UILabel]!
     @IBOutlet var lblNegen: [UILabel]!
     @IBOutlet var lblTien2: [UILabel]!
+
+    @IBOutlet var lblAll: [UILabel]!
+    
+    @IBOutlet weak var LongPress: UIView!
+    
+    @objc func Long() {
+        LongPress.backgroundColor = UIColor.purple
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //tijd(ViewControler self)
-        tijd()
+
+        ClockHelper(delegate: self)
+
+        let longG = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.Long))
+        //longG.minimumPressDuration = 1.5
+        LongPress.addGestureRecognizer(longG)
     }
     
-    func tijd(){
-        let date = Date()
-        let calendar = Calendar.current
-        let minuten = calendar.component(.minute, from: date)
-        let min = ch.getMinuten(minuten: minuten)
-        let uur = calendar.component(.hour, from: date)
-        ch.setMinuten(minuten: min, u: uur)
-        let time = ch.getTime()
+    func updateClock(_ result: Array<String>) {
+        tijd(result: result)
+    }
+    
+    func tijd(result: Array<String>){
+        for label in self.lblAll {
+            label.textColor = UIColor.white
+        }
+        let time = result
         
         time.forEach { woord in
             switch (woord){
@@ -106,7 +119,7 @@ class ViewController: UIViewController {
                     label.textColor = UIColor.black
                 }
                 break
-            case "Vier":
+            case "VIER":
                 for label in self.lblVier {
                     label.textColor = UIColor.black
                 }
