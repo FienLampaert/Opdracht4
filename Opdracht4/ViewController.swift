@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, ClockHelperDelegate {   
 
     //let ch = ClockHelper(delegate: self as! ClockHelperDelegate)
+    let a = Alarm()
     
     @IBOutlet var lblHet: [UILabel]!
     @IBOutlet var lblIs: [UILabel]!
@@ -38,7 +39,28 @@ class ViewController: UIViewController, ClockHelperDelegate {
     @IBOutlet weak var LongPress: UIView!
     
     @objc func Long() {
-        LongPress.backgroundColor = UIColor.purple
+        //LongPress.backgroundColor = UIColor.purple
+        
+        let alert = UIAlertController(title: "Configuratie", message: "Instellen van wekker.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Annuleer", style: .default, handler:nil))
+        alert.addAction(UIAlertAction(title: "Bewaar", style: .default, handler: {
+            action in
+            let alarm = alert.textFields?.first?.text
+            if alarm?.trimmingCharacters(in: .whitespaces) != ""{
+                self.setAlarm(alarm: alarm!)
+            }
+            /*else{
+                self.Long()
+            }*/
+            
+        }))
+        
+        alert.addTextField(configurationHandler: {
+            textField in
+            textField.placeholder = "Geef je tijd in als uu:mm bv. 08:30"
+        })
+        
+        self.present(alert, animated: true)
     }
     
     override func viewDidLoad() {
@@ -52,14 +74,53 @@ class ViewController: UIViewController, ClockHelperDelegate {
         LongPress.addGestureRecognizer(longG)
     }
     
+    func setAlarm(alarm: String){
+        let correct = controle(alarm: alarm)
+        
+        if correct == true {
+            let time = alarm.split(separator: ":")
+            let uur = Int(time[0])
+            let min = Int(time[1])
+            
+            a.setUur(uur: uur!)
+            a.setMinuten(min: min!)
+        }
+    }
+    
+    func controle(alarm: String) -> Bool{
+        var correct = false
+        
+        if alarm.count == 5{
+            if(alarm.firstIndex(of: ":") != nil){
+                let time = alarm.split(separator: ":")
+                let uur = Int(time[0])
+                let min = Int(time[1])
+                if(uur! >= 0){
+                    if(uur! < 24)
+                    {
+                        if(min! >= 0) {
+                            if(min! < 60){
+                                correct = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return correct
+    }
+    
     func updateClock(_ result: Array<String>) {
+        for label in lblAll {
+            label.textColor = UIColor.white
+        }
+        
         tijd(result: result)
     }
     
     func tijd(result: Array<String>){
-        for label in self.lblAll {
-            label.textColor = UIColor.white
-        }
+        
         let time = result
         
         time.forEach { woord in

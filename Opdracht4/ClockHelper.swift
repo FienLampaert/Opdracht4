@@ -18,6 +18,7 @@ class ClockHelper{
     var tekst: [String]
     
     init(delegate: ClockHelperDelegate){
+        
         tekst = ["HET","IS"]
         
         self.delegate = delegate
@@ -30,6 +31,9 @@ class ClockHelper{
     
     func updateClock(_ timer: Timer){
         //let result = timer.fireDate.description
+        
+        tekst.removeAll()
+        tekst = ["HET","IS"]
         let resultArray = getTime()
         delegate.updateClock(resultArray)
     }
@@ -168,16 +172,22 @@ class ClockHelper{
         case 45:
             tekst.append("KWART");
             tekst.append("VOOR");
-            setUur(uur: u)
+            let uHalf = u + 1
+            setUur(uur: uHalf)
             break;
         case 50:
             tekst.append("TIEN");
             tekst.append("VOOR");
-            setUur(uur: u)
+            let uHalf = u + 1
+            setUur(uur: uHalf)
             break;
         case 55:
             tekst.append("VIJF");
             tekst.append("VOOR");
+            let uHalf = u + 1
+            setUur(uur: uHalf)
+            break;
+        case 00:
             setUur(uur: u)
             break;
         default:
