@@ -35,6 +35,7 @@ class ViewController: UIViewController, ClockHelperDelegate {
     @IBOutlet var lblTien2: [UILabel]!
 
     @IBOutlet var lblAll: [UILabel]!
+    @IBOutlet var image: UIImageView!
     
     @IBOutlet weak var LongPress: UIView!
     
@@ -101,12 +102,40 @@ class ViewController: UIViewController, ClockHelperDelegate {
                         if(min! >= 0) {
                             if(min! < 60){
                                 correct = true
+                                image.isHidden = false;
+                                image.backgroundColor = nil
+                            }
+                            else{
+                                image.isHidden = false;
+                                image.backgroundColor = UIColor.red;
                             }
                         }
+                        else{
+                            image.isHidden = false;
+                            image.backgroundColor = UIColor.red;
+                        }
+                    }
+                    else{
+                        image.isHidden = false;
+                        image.backgroundColor = UIColor.red;
                     }
                 }
+                else{
+                    image.isHidden = false;
+                    image.backgroundColor = UIColor.red;
+                }
             }
+            else{
+                image.isHidden = false;
+                image.backgroundColor = UIColor.red;
+            }
+            
         }
+        else{
+            image.isHidden = false;
+            image.backgroundColor = UIColor.red;
+        }
+        
         
         return correct
     }

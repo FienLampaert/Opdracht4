@@ -788,7 +788,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ZDG-R2-c8s">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ZDG-R2-c8s">
                                 <rect key="frame" x="1276" y="20" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="JhP-e9-Ozk"/>
@@ -1618,6 +1618,7 @@
                     </view>
                     <connections>
                         <outlet property="LongPress" destination="8bC-Xf-vdC" id="WtW-0g-4fp"/>
+                        <outlet property="image" destination="ZDG-R2-c8s" id="ebg-Fc-uar"/>
                         <outletCollection property="lblIs" destination="Mvt-8W-UVM" collectionClass="NSMutableArray" id="fGS-by-gf9"/>
                         <outletCollection property="lblHet" destination="4cf-Kz-ZRr" collectionClass="NSMutableArray" id="YQq-Bs-LFZ"/>
                         <outletCollection property="lblVijf" destination="HRt-OQ-Vo7" collectionClass="NSMutableArray" id="Vzh-a4-XzS"/>
