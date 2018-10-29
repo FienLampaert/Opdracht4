@@ -25,4 +25,22 @@ class Alarm{
     func setUur(uur: Int){
         self.uur = uur
     }
+    
+    func getMinuten() -> Int{
+        return self.minuten
+    }
+    
+    func getUur() -> Int{
+        return self.uur
+    }
+    
+    func toString() -> String {
+        if (minuten < 10){
+            return String(self.uur) + ":0" + String(self.minuten)
+        }
+        else{
+            return String(self.uur) + ":" + String(self.minuten)
+        }
+        
+    }
 }

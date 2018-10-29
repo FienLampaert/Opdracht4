@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, ClockHelperDelegate {   
 
     //let ch = ClockHelper(delegate: self as! ClockHelperDelegate)
-    let a = Alarm()
+    var a = Alarm()
     
     @IBOutlet var lblHet: [UILabel]!
     @IBOutlet var lblIs: [UILabel]!
@@ -146,6 +146,30 @@ class ViewController: UIViewController, ClockHelperDelegate {
         }
         
         tijd(result: result)
+        
+        alarm()
+    }
+    
+    func alarm() {
+        if a.toString != nil {
+            let date = Date()
+            let calendar = Calendar.current
+            let minuten = calendar.component(.minute, from: date)
+            let uur = calendar.component(.hour, from: date)
+            
+            if(minuten == a.getMinuten()){
+                if(uur == a.getUur()) {
+                    let alert = UIAlertController(title: "ALARM", message: "Het is " + a.toString() + "!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{
+                        action in
+                        self.a = Alarm()
+                        self.image.isHidden = true;
+                        
+                    }))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
     }
     
     func tijd(result: Array<String>){
